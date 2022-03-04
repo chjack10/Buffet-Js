@@ -10,16 +10,16 @@ if ( !JSON.parse(localStorage.getItem('cart')) ) {
     'use strict'
     let timerInterval;
     const processPayment = () => {
-    
+        
         Swal.fire({
             title: 'Procesando el pago...',
             timer: 2000,
             timerProgressBar: true,
             didOpen: () => {
-              Swal.showLoading()
+              Swal.showLoading();
             },
             willClose: () => {
-              clearInterval(timerInterval)
+              clearInterval(timerInterval);
             }
           }).then((result) => {
             if (result.dismiss === Swal.DismissReason.timer) {
@@ -38,22 +38,22 @@ if ( !JSON.parse(localStorage.getItem('cart')) ) {
     };
 
     // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    const forms = document.querySelectorAll('.needs-validation')
+    const forms = document.querySelectorAll('.needs-validation');
 
     // Loop over them and prevent submission. Once all fields were validated, call swal.
     Array.prototype.slice.call(forms)
         .forEach(function (form) {
             form.addEventListener('submit', function (event) {
                 if (!form.checkValidity()) {
-                    event.preventDefault()
-                    event.stopPropagation()
+                    event.preventDefault();
+                    event.stopPropagation();
 
                 } else {
-                    event.preventDefault()
-                    processPayment()
+                    event.preventDefault();
+                    processPayment();
                 }
 
-                form.classList.add('was-validated')                
+                form.classList.add('was-validated');                
             }, false) 
         })
 })();
@@ -63,8 +63,6 @@ if ( !JSON.parse(localStorage.getItem('cart')) ) {
 ( () => {
     const cart = new Cart();
     const $checkOutCart = document.querySelector('#checkoutCart');
-    const $paymentForm = document.querySelector('#paymentForm');
-    let timerInterval;
 
     // APPEND BASE TEMPLATE
 
